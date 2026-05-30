@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    background: #1e1e1e;
+    color: #fff;
+    padding: 20px;
+}
+
+a:visited {
+  color: green;
+}
+
+/* Form container */
+#formContainer {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #2d2d2d;
+    border-radius: 5px;
+    border: 1px solid #00ff00;
+}
+
+#formContainer h2 {
+    color: #00ff00;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#emailForm{
+    display: flex;
+    flex-direction: column;
+}
+
+#emailForm label {
+    margin-top: 15px;
+    color: #00ff00;
+}
+
+#emailForm input[type="text"],
+#emailForm input[type="checkbox"] {
+    margin-top: 8px;
+    padding: 10px;
+    background: #1e1e1e;
+    color: #fff;
+    border: 1px solid #00ff00;
+    border-radius: 3px;
+}
+
+#emailForm input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#emailForm button {
+    margin-top: 20px;
+    padding: 12px;
+    background: #00ff00;
+    color: #1e1e1e;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: monospace;
+}
+
+#emailForm button:hover {
+    background: #00dd00;
+}
+
+/* Footer */
+.footer {
+    background: #2d2d2d;
+    color: #fff;
+    border-top: 1px solid #00ff00;
+    padding: 30px 20px;
+    margin-top: 50px;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-content p {
+    margin-bottom: 20px;
+    color: #00ff00;
+}
+
+.footer-content ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-content a {
+    color: #00ff00;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-family: monospace;
+}
+
+.footer-content a:hover {
+    color: #00dd00;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+/* Centering */
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}

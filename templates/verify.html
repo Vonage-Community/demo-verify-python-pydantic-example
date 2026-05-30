@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="formContainer">
+  <h2>Check your email</h2>
+  <p>A verification code has been sent to {{ email }}</p>
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
+  <form id="emailForm" action="/check-code" method="post">
+    <input type="hidden" name="email" value="{{ email }}">
+    <label for="code">Enter your verification code:</label><br><br>
+    <input type="text" id="code" name="code" required>
+    <button type="submit">Verify</button>
+  </form>
+</div>
+{% endblock %}
