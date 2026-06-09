@@ -1,0 +1,3 @@
+fastapi[standard]
+vonage
+python-dotenv 

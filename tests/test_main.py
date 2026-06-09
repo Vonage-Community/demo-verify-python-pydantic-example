@@ -87,5 +87,5 @@ class TestMain(unittest.TestCase):
         self.assertEqual(
             test_result.status_code,
             expected_result,
-            msg=f"Test without Pydantic failed with: {test_result.status_code}. Expected: {expected_result}",
+            msg=f"Test with Pydantic failed with: {test_result.status_code}. Expected: {expected_result}",
         )

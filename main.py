@@ -4,27 +4,13 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from vonage import Auth, Vonage
 from vonage_verify import EmailChannel, VerifyRequest
-
-# from pydantic_settings import BaseSettings, SettingsConfigDict
-# from dotenv import load_dotenv
 from config import settings
-
-# load_dotenv()
-
-# class Settings(BaseSettings):
-#     vonage_application_id: str
-#     vonage_private_key_path: str
-#     verify_brand_name: str = "Hello World"
-
-#     model_config = SettingsConfigDict(env_file=".env")
-
-# settings = Settings()
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Store request_id in memory (use a database in production)
+# Store request_id in memory
 verify_sessions = {}
 
 client = Vonage(
@@ -89,26 +75,3 @@ async def check_code(request: Request, email: str = Form(...), code: str = Form(
                 "error": "Invalid code. Please try again.",
             },
         )
-
-
-# =============================================================================
-# Test code:
-# Uncomment the code below and comment out the code above to see the difference
-# =============================================================================
-@app.post("/send-code", response_class=HTMLResponse)
-async def send_code(request: Request, email: str = Form(...)):
-    verify_request = VerifyRequest(
-        brand=123456,
-        workflow=[
-            EmailChannel(to="not-an-email"),
-        ],
-        channel_timeout="sixty",
-        code_length="five",
-    )
-    response = client.verify.start_verification(verify_request)
-    # Store the request_id against the email
-    verify_sessions[email] = response.request_id
-
-    return templates.TemplateResponse(
-        request, "verify.html", {"request": request, "email": email}
-    )
