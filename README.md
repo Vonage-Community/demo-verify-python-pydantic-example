@@ -119,6 +119,8 @@ The test without Pydantic _fails_ because the result is a `422` and not a `202` 
 AssertionError: 422 != 202 : Test without Pydantic failed with: 422. Expected: 202
 ```
 
+This indicates that the Verify endpoint was called despite invalid parameters -- something that Pydantic caught _before_ making a call to the API. This demonstrates how Pydantic validates models at creation and can help prevent wasted API calls.
+
 ## References
 
 - [A Comprehensive Guide on Working with Python Virtual Environments](https://vonage.dev/42D6eeT)
