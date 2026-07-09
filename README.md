@@ -102,6 +102,8 @@ test_with_pydantic (tests.test_main.TestMain.test_with_pydantic) ... ERROR
 test_without_pydantic (tests.test_main.TestMain.test_without_pydantic) ... FAIL
 ```
 
+### What the tests tell us
+
 What's important to note here is that the test using Pydantic _errors out_ as opposed to _failing_. This is because Pydantic catches the incorrect request body parameters when the `VerifyRequest` object is created:
 
 ```
