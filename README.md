@@ -130,5 +130,6 @@ This indicates that the Verify endpoint was called despite invalid parameters --
 
 ## References
 
+- [Python Environment Variables (Env Vars): A Primer](https://vonage.dev/4wteA6n)
 - [A Comprehensive Guide on Working with Python Virtual Environments](https://vonage.dev/42D6eeT)
 - [Vonage Verify API for Developers](https://vonage.dev/4nYXkCu)
