@@ -32,12 +32,19 @@ Click the “Generate new application” button.
 
 ## Run the code
 
-### 1. Create and activate a Python virtual environment
+### 1. Clone this repo
 
+Clone this repo and change directories to the project directory:
+```
+git clone https://github.com/Vonage-Community/demo-verify-python-pydantic-example.git && cd demo-verify-python-pydantic-example
+```
+### 2. Set up your environment
+Set up your environment by first creating and activating a [Python virtual environment](https://vonage.dev/42D6eeT):
 ```
 virtuanlenv venv && source venv/bin/activate
 ```
-### 2. Install dependencies
+
+Then install the project dependencies:
 ```
 pip install -r requirements.txt
 ```
@@ -60,11 +67,11 @@ Move your private key file to your project directory and configure the variables
 | VONAGE_APPLICATION_ID   | This is the Vonage-generated ID of the Voice application you created for this sample code   |
 | VONAGE_PRIVATE_KEY_PATH | This is the path to the **private.key** file you downloaded from the developer dashboard    |
 
-Then update the name of the file from `.env_template` to `.env`.
+Then update the name of the file from `.env_template` to `.env`. You can learn more about handling environment variables in Python [here](https://vonage.dev/4wteA6n).
 
 ### 5. Run the app
 
-To spin up the app, run the following:
+To spin up the app, run the following from the project root directory:
 
 `fastapi dev`
 
