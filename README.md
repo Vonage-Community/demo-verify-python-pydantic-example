@@ -99,7 +99,7 @@ This repo also provides a demonstration comparing the use of Pydantic to create 
 Run the tests with the following command:
 
 ```
-python -m unittest -v
+python -m unittest -v tests/test_pydantic_demo.py
 ```
 
 Running the tests should produce the following outcome:

@@ -2,8 +2,7 @@ from fastapi import FastAPI, Form, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from vonage import Auth, Vonage
-from vonage_verify import EmailChannel, VerifyRequest
+import vonage_handlers
 from config import settings
 
 app = FastAPI()
@@ -13,13 +12,6 @@ templates = Jinja2Templates(directory="templates")
 # Store request_id in memory
 verify_sessions = {}
 
-client = Vonage(
-    Auth(
-        application_id=settings.vonage_application_id,
-        private_key=settings.vonage_private_key_path,
-    )
-)
-
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
@@ -28,15 +20,8 @@ async def index(request: Request):
 
 @app.post("/send-code", response_class=HTMLResponse)
 async def send_code(request: Request, email: str = Form(...)):
-    verify_request = VerifyRequest(
-        brand=settings.verify_brand_name,
-        workflow=[
-            EmailChannel(to=email),
-        ],
-        channel_timeout=60,
-        code_length=5,
-    )
-    response = client.verify.start_verification(verify_request)
+
+    response = vonage_handlers.start_email_verification(email=email)
     # Store the request_id against the email
     verify_sessions[email] = response.request_id
 
@@ -61,7 +46,7 @@ async def check_code(request: Request, email: str = Form(...), code: str = Form(
         )
 
     try:
-        client.verify.check_code(request_id=request_id, code=code)
+        vonage_handlers.check_code(request_id=request_id, code=code)
         # Clean up session
         del verify_sessions[email]
         return templates.TemplateResponse(request, "success.html", {"request": request})
