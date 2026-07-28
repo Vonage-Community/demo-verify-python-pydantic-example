@@ -1,3 +1,4 @@
+from config import settings
 from vonage import Auth, Vonage
 from vonage_verify import (
     EmailChannel,
@@ -5,7 +6,7 @@ from vonage_verify import (
     StartVerificationResponse,
     CheckCodeResponse,
 )
-from config import settings
+from vonage_http_client import HttpRequestError
 
 client = Vonage(
     Auth(
@@ -21,7 +22,7 @@ def start_email_verification(email: str) -> StartVerificationResponse:
         workflow=[
             EmailChannel(to=email),
         ],
-        channel_timeout=60,
+        channel_timeout=120,
         code_length=5,
     )
     response = client.verify.start_verification(verify_request)
